@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Texas Hold'em Cheat Sheet</title>
+<style>
+  @media print {
+    body { margin: 0; padding: 12px; font-size: 11px; }
+    .page-break { page-break-after: always; }
+    @page { size: letter; margin: 0.5in; }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .print-btn { display: none; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, system-ui, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 16px;
+    max-width: 8.5in;
+    margin: 0 auto;
+    -webkit-text-size-adjust: 100%;
+  }
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+    body { font-size: 11px; }
+    h1 { font-size: 20px; margin-bottom: 4px; }
+    .subtitle { display: block; }
+    .tips-body { columns: 2; column-gap: 16px; }
+  }
+  .section {
+    border: 1.5px solid #222;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: #222;
+    color: #fff;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .section-body { padding: 10px; }
+  .full-width { grid-column: 1 / -1; }
+
+  /* Hand rankings */
+  .hand-row {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .hand-row:last-child { border-bottom: none; }
+  .hand-rank {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .hand-name { font-weight: 700; width: 110px; flex-shrink: 0; font-size: 12px; }
+  .hand-example { color: #555; flex: 1; font-size: 11px; }
+  .hand-cards { font-family: 'Courier New', monospace; font-weight: 600; }
+  @media (max-width: 420px) {
+    .hand-name { width: 90px; font-size: 11px; }
+    .hand-example { font-size: 10px; }
+    .hand-desc { display: none; }
+  }
+
+  .s { color: #000; }
+  .h { color: #e00; }
+  .d { color: #e00; }
+  .c { color: #000; }
+
+  /* Starting hands */
+  .tier { margin-bottom: 8px; }
+  .tier:last-child { margin-bottom: 0; }
+  .tier-label {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+  }
+  .tier-premium .tier-label { color: #b91c1c; }
+  .tier-strong .tier-label { color: #c2410c; }
+  .tier-playable .tier-label { color: #1d4ed8; }
+  .tier-hands {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  /* Flow */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    background: #f3f3f3;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 8px;
+    text-align: center;
+    flex: 1;
+    min-width: 60px;
+  }
+  .flow-step strong { display: block; font-size: 12px; }
+  .flow-step span { font-size: 9px; color: #666; }
+  .flow-arrow { color: #aaa; font-size: 14px; flex-shrink: 0; }
+  @media (max-width: 420px) {
+    .flow-arrow { display: none; }
+    .flow { gap: 6px; }
+    .flow-step { min-width: 55px; }
+  }
+
+  /* Actions */
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .action {
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 6px 8px;
+  }
+  .action strong { font-size: 12px; }
+  .action span { display: block; color: #666; font-size: 11px; }
+
+  /* Tips */
+  .tip {
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    gap: 6px;
+  }
+  .tip:last-child { border-bottom: none; }
+  .tip-icon {
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+  }
+
+  /* Position */
+  .pos-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 10px;
+  }
+  .pos-label { font-weight: 700; font-size: 12px; }
+  .pos-desc { color: #555; }
+
+  /* Quick odds */
+  .odds-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  @media (min-width: 640px) {
+    .odds-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .odds-item {
+    display: flex;
+    justify-content: space-between;
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 5px 8px;
+  }
+  .odds-item strong { font-size: 12px; white-space: nowrap; margin-left: 8px; }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 10px;
+    margin-bottom: 14px;
+    display: none;
+  }
+
+  .print-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 32px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .print-btn:hover { background: #444; }
+
+  .note { margin-top: 6px; color: #888; font-size: 10px; }
+</style>
+</head>
+<body>
+
+<h1>Texas Hold'em Cheat Sheet</h1>
+<p class="subtitle">Print this. Keep it in your pocket. Glance at it under the table.</p>
+
+<div class="grid">
+
+  <!-- HAND RANKINGS -->
+  <div class="section full-width">
+    <div class="section-header">Hand Rankings (Best &rarr; Worst)</div>
+    <div class="section-body">
+      <div class="hand-row">
+        <div class="hand-rank">1</div>
+        <div class="hand-name">Royal Flush</div>
+        <div class="hand-example"><span class="hand-cards"><span class="h">A&#9829; K&#9829; Q&#9829; J&#9829; 10&#9829;</span></span><span class="hand-desc"> &mdash; A-K-Q-J-10 same suit</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">2</div>
+        <div class="hand-name">Straight Flush</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">7&#9824; 8&#9824; 9&#9824; 10&#9824; J&#9824;</span></span><span class="hand-desc"> &mdash; 5 consecutive, same suit</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">3</div>
+        <div class="hand-name">Four of a Kind</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">9&#9824;</span> <span class="h">9&#9829;</span> <span class="d">9&#9830;</span> <span class="c">9&#9827;</span> <span class="s">K&#9824;</span></span><span class="hand-desc"> &mdash; 4 matching</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">4</div>
+        <div class="hand-name">Full House</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">K&#9824;</span> <span class="h">K&#9829;</span> <span class="d">K&#9830;</span> <span class="c">7&#9827;</span> <span class="s">7&#9824;</span></span><span class="hand-desc"> &mdash; 3 of a kind + pair</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">5</div>
+        <div class="hand-name">Flush</div>
+        <div class="hand-example"><span class="hand-cards"><span class="d">2&#9830; 5&#9830; 8&#9830; J&#9830; A&#9830;</span></span><span class="hand-desc"> &mdash; 5 same suit, any order</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">6</div>
+        <div class="hand-name">Straight</div>
+        <div class="hand-example"><span class="hand-cards"><span class="c">4&#9827;</span> <span class="d">5&#9830;</span> <span class="h">6&#9829;</span> <span class="s">7&#9824;</span> <span class="c">8&#9827;</span></span><span class="hand-desc"> &mdash; 5 consecutive, any suit</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">7</div>
+        <div class="hand-name">Three of a Kind</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">Q&#9824;</span> <span class="h">Q&#9829;</span> <span class="d">Q&#9830;</span> <span class="c">5&#9827;</span> <span class="s">8&#9824;</span></span><span class="hand-desc"> &mdash; 3 matching</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">8</div>
+        <div class="hand-name">Two Pair</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">J&#9824;</span> <span class="h">J&#9829;</span> <span class="c">4&#9827;</span> <span class="d">4&#9830;</span> <span class="s">A&#9824;</span></span><span class="hand-desc"> &mdash; 2 different pairs</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank">9</div>
+        <div class="hand-name">One Pair</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">10&#9824;</span> <span class="h">10&#9829;</span> <span class="c">3&#9827;</span> <span class="d">7&#9830;</span> <span class="s">K&#9824;</span></span><span class="hand-desc"> &mdash; 2 matching</span></div>
+      </div>
+      <div class="hand-row">
+        <div class="hand-rank" style="background:#999;">10</div>
+        <div class="hand-name">High Card</div>
+        <div class="hand-example"><span class="hand-cards"><span class="s">A&#9824;</span> <span class="h">J&#9829;</span> <span class="c">8&#9827;</span> <span class="d">5&#9830;</span> <span class="s">2&#9824;</span></span><span class="hand-desc"> &mdash; Nothing. Highest card plays.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW A HAND PLAYS -->
+  <div class="section full-width">
+    <div class="section-header">How a Hand Plays Out</div>
+    <div class="section-body">
+      <div class="flow">
+        <div class="flow-step"><strong>Pre-Flop</strong><span>2 hole cards<br/>Bet round 1</span></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><strong>Flop</strong><span>3 community<br/>Bet round 2</span></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><strong>Turn</strong><span>1 more card<br/>Bet round 3</span></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><strong>River</strong><span>1 final card<br/>Bet round 4</span></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><strong>Showdown</strong><span>Best 5 of 7<br/>wins</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STARTING HANDS -->
+  <div class="section">
+    <div class="section-header">Starting Hands to Play</div>
+    <div class="section-body">
+      <div class="tier tier-premium">
+        <div class="tier-label">&#9733; Premium &mdash; Raise from anywhere</div>
+        <div class="tier-hands">AA &nbsp;KK &nbsp;QQ &nbsp;AKs</div>
+      </div>
+      <div class="tier tier-strong">
+        <div class="tier-label">&#9679; Strong &mdash; Raise or call a raise</div>
+        <div class="tier-hands">JJ &nbsp;1010 &nbsp;AQs &nbsp;AKo &nbsp;KQs &nbsp;AJs</div>
+      </div>
+      <div class="tier tier-playable">
+        <div class="tier-label">&#9675; Playable &mdash; In position only</div>
+        <div class="tier-hands">99-22 &nbsp;ATs &nbsp;KJs &nbsp;QJs &nbsp;J10s &nbsp;109s &nbsp;98s &nbsp;87s &nbsp;76s</div>
+      </div>
+      <p class="note">s = suited &nbsp; o = offsuit &nbsp; Fold everything else as a beginner.</p>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="section">
+    <div class="section-header">Your Actions</div>
+    <div class="section-body">
+      <div class="action-grid">
+        <div class="action"><strong>Fold</strong><span>Quit. Lose your bet.</span></div>
+        <div class="action"><strong>Check</strong><span>Pass. Only if nobody bet.</span></div>
+        <div class="action"><strong>Call</strong><span>Match the current bet.</span></div>
+        <div class="action"><strong>Raise</strong><span>Increase the bet.</span></div>
+      </div>
+      <div style="margin-top:8px; padding-top:6px; border-top:1px solid #eee;">
+        <strong>Blinds:</strong>
+        <span style="color:#555;"> Forced bets that rotate. Small blind = &frac12; min. Big blind = full min. Keeps the game moving.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSITION -->
+  <div class="section">
+    <div class="section-header">Position (Huge Advantage)</div>
+    <div class="section-body">
+      <div class="pos-grid">
+        <div class="pos-label">Early</div><div class="pos-desc">Act first. Premium hands only.</div>
+        <div class="pos-label">Middle</div><div class="pos-desc">Open up slightly. Add strong hands.</div>
+        <div class="pos-label">Late / Button</div><div class="pos-desc">Best spot. Act last. Widest range.</div>
+        <div class="pos-label">Blinds</div><div class="pos-desc">Worst post-flop. Defend selectively.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK ODDS -->
+  <div class="section">
+    <div class="section-header">Quick Odds to Know</div>
+    <div class="section-body">
+      <div class="odds-grid">
+        <div class="odds-item"><span>Pocket pair &rarr; set on flop</span><strong>~12%</strong></div>
+        <div class="odds-item"><span>Flush draw &rarr; flush by river</span><strong>~35%</strong></div>
+        <div class="odds-item"><span>Open-ended straight draw</span><strong>~32%</strong></div>
+        <div class="odds-item"><span>Two overcards &rarr; pair by river</span><strong>~24%</strong></div>
+        <div class="odds-item"><span>Getting dealt AA</span><strong>~0.5%</strong></div>
+        <div class="odds-item"><span>Flopping a set with a pair</span><strong>~7.5:1</strong></div>
+      </div>
+      <p class="note"><strong>Rule of 2 and 4:</strong> Count your &ldquo;outs.&rdquo; Multiply by 4 after the flop, or 2 after the turn, for rough % to hit.</p>
+    </div>
+  </div>
+
+  <!-- SURVIVAL TIPS -->
+  <div class="section full-width">
+    <div class="section-header">10 Rules for Your First Game</div>
+    <div class="section-body tips-body">
+      <div class="tip"><div class="tip-icon">1</div><div><strong>Fold more.</strong> Seriously. 70-80% of hands.</div></div>
+      <div class="tip"><div class="tip-icon">2</div><div><strong>Position is everything.</strong> Tighter early, looser on the button.</div></div>
+      <div class="tip"><div class="tip-icon">3</div><div><strong>Don't chase.</strong> Need one specific card? Probably fold.</div></div>
+      <div class="tip"><div class="tip-icon">4</div><div><strong>Watch the board.</strong> 3 hearts = someone has a flush.</div></div>
+      <div class="tip"><div class="tip-icon">5</div><div><strong>Bet with purpose.</strong> Value or bluff. Never &ldquo;just because.&rdquo;</div></div>
+      <div class="tip"><div class="tip-icon">6</div><div><strong>Respect big raises.</strong> Tight player shoves? They have it.</div></div>
+      <div class="tip"><div class="tip-icon">7</div><div><strong>Manage your stack.</strong> No all-in on marginal hands early.</div></div>
+      <div class="tip"><div class="tip-icon">8</div><div><strong>Watch the players.</strong> Tight? Loose? Aggressive? Adjust.</div></div>
+      <div class="tip"><div class="tip-icon">9</div><div><strong>Don't show cards.</strong> Fold face down. Keep them guessing.</div></div>
+      <div class="tip"><div class="tip-icon">10</div><div><strong>Stay calm.</strong> Bad beats happen. Don't tilt.</div></div>
+    </div>
+  </div>
+
+  <!-- TIE BREAKERS -->
+  <div class="section full-width">
+    <div class="section-header">Tiebreakers (Kickers)</div>
+    <div class="section-body">
+      Same hand type? <strong>Highest cards within</strong> win. Both have pair of Kings? Highest remaining card (&ldquo;kicker&rdquo;) wins. All 5 identical ranks = split pot. <strong>Suits never break ties.</strong>
+    </div>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print Cheat Sheet</button>
+
+</body>
+</html>
