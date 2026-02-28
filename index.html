@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C37 | AI Consultancy</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/c37-icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/c37-icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/c37-icon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/c37-icon-180.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,14 +24,119 @@
                 <p class="lab-list">GEO Citation Substrate · Competitive Intelligence · Structured Ideation · News Aggregation</p>
             </section>
 
-            <a href="mailto:hello@c37.com" class="contact-link">Contact</a>
+            <button class="contact-toggle" id="contactToggle">Contact</button>
+
+            <div class="contact-reveal" id="contactReveal">
+                <p class="contact-name">Mike McCartin</p>
+
+                <div class="contact-phones">
+                    <div class="contact-phone">
+                        <a href="tel:+12144428255">214.442.TALK</a>
+                        <span class="contact-region">Dallas</span>
+                    </div>
+                    <div class="contact-phone">
+                        <a href="tel:+12056878255">205.687.TALK</a>
+                        <span class="contact-region">Alabama</span>
+                    </div>
+                </div>
+
+                <div class="contact-links">
+                    <a href="mailto:hello@c37.com">hello@c37.com</a>
+                    <span class="contact-dot">&middot;</span>
+                    <a href="https://www.linkedin.com/in/mccartin" target="_blank" rel="noopener">in/mccartin</a>
+                </div>
+            </div>
         </div>
     </main>
+    <noscript>
+        <style>.contact-toggle{display:none}</style>
+        <div style="text-align:center;padding:1rem">
+            <a href="mailto:hello@c37.com" style="color:#000;font-weight:500">hello@c37.com</a>
+        </div>
+    </noscript>
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 C37, LLC. All rights reserved.</p>
+            <p>&copy; 2026 C37, LLC. All rights reserved. <span class="footer-dot">&middot;</span> <button class="privacy-toggle" id="privacyToggle">Privacy</button></p>
+
+            <div class="privacy-reveal" id="privacyReveal">
+                <div class="privacy-content">
+                    <h3 class="privacy-heading">Privacy Policy &amp; Terms of Use</h3>
+                    <p class="privacy-updated">As of February 2026</p>
+
+                    <p>Welcome to c37.com (the "Site"), a website provided by C37, LLC ("Company"). Company recognizes the importance of protecting your privacy, and this policy covers Company's handling of information collected by it through the Site or from other sources in the ordinary course of business.</p>
+
+                    <h4>1. Controller</h4>
+                    <p>Any personal information collected by Company is controlled by Company. Questions and other requests regarding Company's handling of personal information should be sent to <a href="mailto:hello@c37.com">hello@c37.com</a>.</p>
+
+                    <h4>2. Service Terms</h4>
+                    <p>If you intend to use the Site, your use is at all times subject to these terms and this policy. Using the Site is deemed to be irrevocable acceptance of this policy. If you do not agree, you should immediately exit the Site.</p>
+
+                    <h4>3. Personal Information Collected</h4>
+                    <p>Company does not collect any personal information from you through the Site. The Site contains no forms, no login functionality, and no account creation. Contact information displayed on the Site belongs to Company, not collected from visitors.</p>
+
+                    <h4>4. Cookies &amp; Analytics</h4>
+                    <p>This Site does not use cookies, analytics, tracking pixels, or any other tracking technology. No analytical information is collected about your visit.</p>
+
+                    <h4>5. Compliance</h4>
+                    <p>Company complies with all applicable laws relating to personal information, including the Children's Online Privacy Protection Act. The Site is not intended for children under 13 years of age.</p>
+
+                    <h4>6. Third-Party Sites</h4>
+                    <p>The Site may contain links to websites provided by third parties. This policy does not cover the privacy practices of any third-party site. Company is not responsible for any information you submit to any third-party site.</p>
+
+                    <h4>7. Email &amp; Phone</h4>
+                    <p>If you contact Company via email or phone, standard communication records apply on those platforms. Company may collect and store your contact information and the contents of your communication for the purpose of responding to you or for other legitimate business purposes.</p>
+
+                    <h4>8. Protection of Personal Information</h4>
+                    <p>Company will use commercially reasonable efforts to protect any personal information from unauthorized disclosure, destruction, loss, and misuse. Since no transmission of information over the internet is completely secure, you must assume the risk that unauthorized disclosure could occur.</p>
+
+                    <h4>9. Do Not Track</h4>
+                    <p>Company does not track Site users over time or across third-party websites. Since no tracking occurs, no response to "do not track" signals is necessary.</p>
+
+                    <h4>10. Applicable Law</h4>
+                    <p>This policy will be governed by, and construed in accordance with, the laws of the state of Texas, without regard to principles of conflict of laws.</p>
+
+                    <h4>11. Disputes</h4>
+                    <p>You and Company will submit any dispute relating to this policy exclusively to a federal, state, or local court located in the county of Dallas, Texas, and consent to any such court being a proper venue.</p>
+
+                    <h4>12. Revisions</h4>
+                    <p>Company may revise any provision of this policy from time to time by posting the revised provision on the Site. Your use of the Site following any revision will be deemed irrevocable acceptance of such revision.</p>
+
+                    <h4>13. Contact</h4>
+                    <p>If you have questions regarding this policy, please contact:<br>C37, LLC<br><a href="mailto:hello@c37.com">hello@c37.com</a></p>
+                </div>
+            </div>
         </div>
     </footer>
+    <script>
+        const toggle = document.getElementById('contactToggle');
+        const reveal = document.getElementById('contactReveal');
+
+        toggle.addEventListener('click', () => {
+            const isOpen = reveal.classList.toggle('is-open');
+            toggle.textContent = isOpen ? 'Close' : 'Contact';
+            toggle.classList.toggle('is-active', isOpen);
+
+            if (isOpen) {
+                setTimeout(() => {
+                    reveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 350);
+            }
+        });
+
+        const privacyToggle = document.getElementById('privacyToggle');
+        const privacyReveal = document.getElementById('privacyReveal');
+
+        privacyToggle.addEventListener('click', () => {
+            const isOpen = privacyReveal.classList.toggle('is-open');
+            privacyToggle.textContent = isOpen ? 'Close' : 'Privacy';
+
+            if (isOpen) {
+                setTimeout(() => {
+                    privacyReveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 350);
+            }
+        });
+    </script>
 </body>
 </html>
 
