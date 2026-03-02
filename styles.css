@@ -118,6 +118,15 @@ body {
   font-size: 1.25rem;
   font-weight: 500;
   color: #000000;
+  margin-bottom: 0.2rem;
+}
+
+.contact-title {
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999999;
   margin-bottom: 1.5rem;
 }
 
