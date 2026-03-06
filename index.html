@@ -17,12 +17,13 @@
         <div class="container">
             <h1 class="title">C37</h1>
             <p class="subtitle">Applied Intelligence</p>
-            <p class="sub-subtitle">Agency + Consultancy</p>
+            <p class="sub-subtitle">Agency + Consultancy + Lab</p>
 
-            <section class="lab">
-                <h2 class="lab-title">Active AI Experiments</h2>
+            <button class="lab-toggle" id="labToggle">AI Experiments</button>
+
+            <div class="lab-reveal" id="labReveal">
                 <p class="lab-list">GEO Citation Substrate · Competitive Intelligence · Structured Ideation · News Aggregation</p>
-            </section>
+            </div>
 
             <button class="contact-toggle" id="contactToggle">Contact</button>
 
@@ -114,6 +115,20 @@
         </div>
     </footer>
     <script>
+        const labToggle = document.getElementById('labToggle');
+        const labReveal = document.getElementById('labReveal');
+
+        labToggle.addEventListener('click', () => {
+            const isOpen = labReveal.classList.toggle('is-open');
+            labToggle.classList.toggle('is-active', isOpen);
+
+            if (isOpen) {
+                setTimeout(() => {
+                    labReveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 350);
+            }
+        });
+
         const toggle = document.getElementById('contactToggle');
         const reveal = document.getElementById('contactReveal');
 
