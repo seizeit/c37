@@ -64,48 +64,6 @@ body {
   color: #666666;
 }
 
-/* Lab toggle button */
-.lab-toggle {
-  display: block;
-  margin: 1.5rem auto 0.5rem;
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #999999;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-}
-
-.lab-toggle:hover,
-.lab-toggle.is-active {
-  color: #000000;
-}
-
-/* Lab reveal panel */
-.lab-reveal {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease 0.1s;
-}
-
-.lab-reveal.is-open {
-  max-height: 150px;
-  opacity: 1;
-  margin-bottom: 0.5rem;
-}
-
-.lab-list {
-  font-size: 0.9rem;
-  color: #666666;
-  line-height: 1.6;
-}
-
 /* Contact toggle button */
 .contact-toggle {
   display: inline-block;

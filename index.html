@@ -21,12 +21,6 @@
 
             <button class="contact-toggle" id="contactToggle">Contact</button>
 
-            <button class="lab-toggle" id="labToggle">AI Experiments</button>
-
-            <div class="lab-reveal" id="labReveal">
-                <p class="lab-list">GEO Citation Substrate · Competitive Intelligence · Structured Ideation · News Aggregation</p>
-            </div>
-
             <div class="contact-reveal" id="contactReveal">
                 <p class="contact-name">Mike McCartin</p>
                 <p class="contact-title">Founder</p>
@@ -115,20 +109,6 @@
         </div>
     </footer>
     <script>
-        const labToggle = document.getElementById('labToggle');
-        const labReveal = document.getElementById('labReveal');
-
-        labToggle.addEventListener('click', () => {
-            const isOpen = labReveal.classList.toggle('is-open');
-            labToggle.classList.toggle('is-active', isOpen);
-
-            if (isOpen) {
-                setTimeout(() => {
-                    labReveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 350);
-            }
-        });
-
         const toggle = document.getElementById('contactToggle');
         const reveal = document.getElementById('contactReveal');
 
