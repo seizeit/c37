@@ -94,7 +94,7 @@ body {
 }
 
 .contact-reveal.is-open {
-  max-height: 300px;
+  max-height: 500px;
   opacity: 1;
   margin-top: 2.5rem;
 }
